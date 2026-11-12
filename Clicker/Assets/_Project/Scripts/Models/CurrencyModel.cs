@@ -6,7 +6,7 @@ namespace CookieClicker.Models
     /// Modelo del dinero del jugador. C# puro: no conoce Unity ni la UI, así que se puede testear en EditMode.
     /// Se usa double porque en un incremental las cifras crecen muchísimo.
     /// </summary>
-    public sealed class CurrencyModel : IReadOnlyCurrency, ICurrencyReceiver, ICurrencySpender
+    public sealed class CurrencyModel : IReadOnlyCurrency, ICurrencyReceiver, ICurrencySpender, ICurrencyRestorer
     {
         public double Balance { get; private set; }
         public double TotalEarned { get; private set; }
@@ -42,6 +42,18 @@ namespace CookieClicker.Models
             Balance -= amount;
             BalanceChanged?.Invoke(Balance);
             return true;
+        }
+
+        public void Restore(double balance, double totalEarned)
+        {
+            if (balance < 0d || double.IsNaN(balance) || double.IsInfinity(balance))
+                throw new ArgumentOutOfRangeException(nameof(balance), "Saldo guardado no válido.");
+            if (totalEarned < balance || double.IsNaN(totalEarned) || double.IsInfinity(totalEarned))
+                throw new ArgumentOutOfRangeException(nameof(totalEarned), "Total ganado guardado no válido.");
+
+            Balance = balance;
+            TotalEarned = totalEarned;
+            BalanceChanged?.Invoke(Balance);
         }
     }
 }
