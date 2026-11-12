@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2cbd65b672745d4b12bc6e884b27112, type: 3}
+  m_Name: HelperSpeed
+  m_EditorClassIdentifier: 
+  _id: helper_speed
+  _title: Ayudantes más rápidos
+  _description: Los ayudantes hacen clic un 10 % más rápido.
+  _baseCost: 200
+  _costMultiplier: 1.6
+  _maxLevel: 20
+  _effectPerLevel: 0.1
+  _requiredUpgrade: {fileID: 11400000, guid: d857d0bc0fc145fda3e94f56aa1111ed, type: 2}
+  _requiredLevel: 1

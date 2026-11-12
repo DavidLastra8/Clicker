@@ -19,6 +19,7 @@ namespace CookieClicker.Models
                 throw new ArgumentOutOfRangeException(nameof(initialBalance), "El saldo inicial no puede ser negativo.");
 
             Balance = initialBalance;
+            TotalEarned = initialBalance;
         }
 
         public void Add(double amount)
@@ -48,7 +49,7 @@ namespace CookieClicker.Models
         {
             if (balance < 0d || double.IsNaN(balance) || double.IsInfinity(balance))
                 throw new ArgumentOutOfRangeException(nameof(balance), "Saldo guardado no válido.");
-            if (totalEarned < balance || double.IsNaN(totalEarned) || double.IsInfinity(totalEarned))
+            if (totalEarned < 0d || double.IsNaN(totalEarned) || double.IsInfinity(totalEarned))
                 throw new ArgumentOutOfRangeException(nameof(totalEarned), "Total ganado guardado no válido.");
 
             Balance = balance;
